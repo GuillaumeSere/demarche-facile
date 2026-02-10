@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "carte-identite",
+    "titre": "Carte nationale d'identité",
+    "documents": [
+      "Photo d'identité récente",
+      "Justificatif de domicile",
+      "Ancienne carte d'identité (si renouvellement)"
+    ],
+    "prix": "Gratuit",
+    "delai": "2 à 4 semaines",
+    "lieu": "Mairie"
+  },
+  {
+    "slug": "passeport",
+    "titre": "Passeport biométrique",
+    "documents": [
+      "Photo d'identité",
+      "Timbre fiscal",
+      "Justificatif de domicile"
+    ],
+    "prix": "86€ (adulte)",
+    "delai": "3 à 6 semaines",
+    "lieu": "Mairie équipée"
+  }
+]
