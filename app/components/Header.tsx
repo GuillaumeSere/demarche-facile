@@ -24,7 +24,7 @@ export default function Header() {
           onClick={closeMenu}
         >
           <span className="text-2xl">📋</span>
-          <span className="hidden sm:inline">Démarche Facile</span>
+          <span className="hidden text-gray-900 hover:text-blue-700 transition-colors sm:inline">Démarche Facile</span>
         </Link>
 
         {/* Menu Desktop */}
@@ -46,7 +46,7 @@ export default function Header() {
         {/* Hamburger Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden cursor-pointer flex flex-col gap-1.5 p-2"
           aria-label="Menu"
         >
           <span

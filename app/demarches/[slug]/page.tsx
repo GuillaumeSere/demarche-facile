@@ -44,7 +44,7 @@ export default async function DemarcheDetail({ params }: Props) {
                     <a href="/demarches" className="inline-flex items-center text-blue-100 hover:text-white mb-4 transition-colors">
                         ← Retour aux démarches
                     </a>
-                    <h1 className="text-4xl font-bold mb-2">{demarche.titre}</h1>
+                    <h1 className="text-2xl md:text-4xl font-bold mb-2">{demarche.titre}</h1>
                     <p className="text-blue-100">Toutes les informations pour cette démarche administrative</p>
                 </div>
             </div>
