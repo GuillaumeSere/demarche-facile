@@ -22,5 +22,136 @@
     "prix": "86€ (adulte)",
     "delai": "3 à 6 semaines",
     "lieu": "Mairie équipée"
+  },
+  {
+    "slug": "permis-conduire",
+    "titre": "Permis de conduire",
+    "documents": [
+      "Pièce d'identité",
+      "Justificatif de domicile",
+      "Certificat médical",
+      "Attestation de suivi de formation"
+    ],
+    "prix": "À partir de 200€",
+    "delai": "4 à 8 semaines",
+    "lieu": "Préfecture"
+  },
+  {
+    "slug": "mariage",
+    "titre": "Mariage civil",
+    "documents": [
+      "Acte de naissance",
+      "Pièce d'identité",
+      "Justificatif de domicile",
+      "Certificat médical",
+      "Dossier de mariage complet"
+    ],
+    "prix": "Gratuit",
+    "delai": "15 jours avant la cérémonie",
+    "lieu": "Mairie de résidence"
+  },
+  {
+    "slug": "naissance",
+    "titre": "Déclaration de naissance",
+    "documents": [
+      "Formulaire rempli",
+      "Pièce d'identité du déclarant",
+      "Certificat médical d'accouchement"
+    ],
+    "prix": "Gratuit",
+    "delai": "5 jours",
+    "lieu": "Mairie du lieu de naissance"
+  },
+  {
+    "slug": "divorce",
+    "titre": "Divorce",
+    "documents": [
+      "Acte de mariage",
+      "Pièces d'identité",
+      "Accord sur les modalités (si à l'amiable)",
+      "Dossier de procédure"
+    ],
+    "prix": "À partir de 300€",
+    "delai": "3 à 12 mois",
+    "lieu": "Tribunal ou notaire"
+  },
+  {
+    "slug": "changement-adresse",
+    "titre": "Changement d'adresse",
+    "documents": [
+      "Formulaire de changement d'adresse",
+      "Pièce d'identité",
+      "Justificatif du nouveau domicile"
+    ],
+    "prix": "Gratuit",
+    "delai": "Immédiat",
+    "lieu": "Mairie ou en ligne"
+  },
+  {
+    "slug": "allocation-logement",
+    "titre": "Demande d'allocation logement",
+    "documents": [
+      "Formulaire de demande",
+      "Pièce d'identité",
+      "Justificatif de ressources",
+      "Justificatif de domicile",
+      "Quittance de loyer"
+    ],
+    "prix": "Gratuit",
+    "delai": "4 à 6 semaines",
+    "lieu": "CAF"
+  },
+  {
+    "slug": "rsa",
+    "titre": "Revenu de Solidarité Active (RSA)",
+    "documents": [
+      "Formulaire de demande",
+      "Pièce d'identité",
+      "Justificatif de résidence",
+      "Avis d'imposition",
+      "Bulletins de salaire"
+    ],
+    "prix": "Gratuit",
+    "delai": "30 jours",
+    "lieu": "CAF"
+  },
+  {
+    "slug": "pension-retraite",
+    "titre": "Demande de pension de retraite",
+    "documents": [
+      "Bulletin de naissance",
+      "Pièce d'identité",
+      "Justificatif de domicile",
+      "Relevés de cotisations",
+      "Avis d'imposition"
+    ],
+    "prix": "Gratuit",
+    "delai": "1 à 3 mois",
+    "lieu": "Centre de la retraite"
+  },
+  {
+    "slug": "actualisation-chomage",
+    "titre": "Actualisation demandeur d'emploi",
+    "documents": [
+      "Attestation actualisée",
+      "Pièce d'identité",
+      "Justificatif de recherche d'emploi"
+    ],
+    "prix": "Gratuit",
+    "delai": "Immédiat",
+    "lieu": "Pôle emploi ou en ligne"
+  },
+  {
+    "slug": "demande-asile",
+    "titre": "Demande d'asile politique",
+    "documents": [
+      "Pièce d'identité",
+      "Justificatif de domicile",
+      "Dossier personnel documenté",
+      "Traductions si nécessaire"
+    ],
+    "prix": "Gratuit",
+    "delai": "Variable",
+    "lieu": "OFPRA"
   }
 ]

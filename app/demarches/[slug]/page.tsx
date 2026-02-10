@@ -38,36 +38,56 @@ export default async function DemarcheDetail({ params }: Props) {
     if (!demarche) return notFound();
 
     return (
-        <main className="p-10 max-w-3xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6">{demarche.titre}</h1>
-
-            <div className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">📄 Documents nécessaires</h2>
-                <ul className="list-disc pl-6 space-y-1">
-                    {demarche.documents.map((doc, i) => (
-                        <li key={i}>{doc}</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                <div className="border p-4 rounded">
-                    <p className="font-semibold">💰 Prix</p>
-                    <p>{demarche.prix}</p>
-                </div>
-
-                <div className="border p-4 rounded">
-                    <p className="font-semibold">⏳ Délai moyen</p>
-                    <p>{demarche.delai}</p>
-                </div>
-
-                <div className="border p-4 rounded sm:col-span-2">
-                    <p className="font-semibold">📍 Où faire la demande</p>
-                    <p>{demarche.lieu}</p>
+        <main className="min-h-screen bg-linear-to-b from-blue-50 to-white">
+            <div className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-12">
+                <div className="max-w-4xl mx-auto px-6">
+                    <a href="/demarches" className="inline-flex items-center text-blue-100 hover:text-white mb-4 transition-colors">
+                        ← Retour aux démarches
+                    </a>
+                    <h1 className="text-4xl font-bold mb-2">{demarche.titre}</h1>
+                    <p className="text-blue-100">Toutes les informations pour cette démarche administrative</p>
                 </div>
             </div>
 
-            <LocateMe />
+            <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="grid sm:grid-cols-3 gap-4 mb-8">
+                    <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-green-500">
+                        <p className="text-sm text-gray-600 mb-1">💰 Tarif</p>
+                        <p className="text-2xl font-bold text-green-600">{demarche.prix}</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-blue-500">
+                        <p className="text-sm text-gray-600 mb-1">⏳ Délai moyen</p>
+                        <p className="text-2xl font-bold text-blue-600">{demarche.delai}</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-orange-500">
+                        <p className="text-sm text-gray-600 mb-1">📍 Lieu</p>
+                        <p className="text-lg font-bold text-orange-600">{demarche.lieu}</p>
+                    </div>
+                </div>
+
+                <div className="bg-white rounded-xl p-8 shadow-md mb-8 border border-gray-100">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <span className="text-2xl">📄</span>
+                        Documents nécessaires
+                    </h2>
+                    <ul className="space-y-3">
+                        {demarche.documents.map((doc, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                                <span className="text-blue-600 font-bold mt-1">✓</span>
+                                <span className="text-gray-700">{doc}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="bg-white rounded-xl p-8 shadow-md border border-gray-100">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <span className="text-2xl">🏛️</span>
+                        Trouver une mairie
+                    </h2>
+                    <LocateMe />
+                </div>
+            </div>
         </main>
     );
 }
