@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://demarche-facile-60.vercel.app/
+
+# Sitemaps
+Sitemap: https://demarche-facile-60.vercel.app/sitemap.xml
