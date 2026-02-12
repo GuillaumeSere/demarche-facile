@@ -15,4 +15,22 @@ module.exports = {
       },
     ],
   },
+
+  additionalPaths: async (config) => {
+  const demarches = [
+    "carte-identite",
+    "passeport",
+    "permis-conduire",
+    "carte-grise"
+  ];
+
+  return demarches.map((slug) => ({
+    loc: `/demarches/${slug}`,
+    changefreq: "monthly",
+    priority: 0.8,
+  }));
+},
+
 };
+
+
