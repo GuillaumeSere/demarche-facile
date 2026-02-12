@@ -4,5 +4,8 @@ export type Demarche = {
   documents: string[];
   prix: string;
   delai: string;
-  lieu: string;
+  lieu: {
+    nom: string;
+    lien?: string;
+  };
 };

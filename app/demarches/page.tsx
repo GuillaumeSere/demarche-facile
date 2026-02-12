@@ -5,6 +5,8 @@ async function getDemarches() {
   return res.json();
 }
 
+import LocationLink from "../components/LocationLink";
+
 export default async function DemarchesPage() {
   const demarches = await getDemarches();
   console.log(demarches)
@@ -40,7 +42,7 @@ export default async function DemarchesPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-orange-600 font-semibold">📍</span>
-                    <span className="text-sm text-gray-600">{d.lieu}</span>
+                    <LocationLink nom={d.lieu.nom} lien={d.lieu.lien} />
                   </div>
                 </div>
                 <div className="mt-4 inline-flex items-center text-blue-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">

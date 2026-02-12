@@ -174,7 +174,7 @@ export default function LocateMe() {
             <button
                 onClick={handleLocate}
                 disabled={loading}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-6 py-2 rounded-lg font-semibold transition-colors flex items-center gap-2"
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 cursor-pointer text-white px-6 py-2 rounded-lg font-semibold transition-colors flex items-center gap-2"
             >
                 {loading ? (
                     <>

@@ -15,6 +15,10 @@ type SearchResult = {
   longitude: number;
   type: string;
   score: number;
+  resultType?: "address" | "service";
+  slug?: string;
+  prix?: string;
+  delai?: string;
 };
 
 type MapLocation = {
@@ -81,13 +85,19 @@ export default function SearchBar() {
   };
 
   const handleSelectResult = (result: SearchResult) => {
-    setSelectedLocation({
-      lat: result.latitude,
-      lon: result.longitude,
-    });
-    setQuery(result.label);
-    setShowResults(false);
-    setResults([]);
+    if (result.resultType === "service") {
+      // Rediriger vers la page du service
+      window.location.href = `/demarches/${result.slug}`;
+    } else {
+      // Pour les adresses, afficher sur la carte
+      setSelectedLocation({
+        lat: result.latitude,
+        lon: result.longitude,
+      });
+      setQuery(result.label);
+      setShowResults(false);
+      setResults([]);
+    }
   };
 
   const handleInputFocus = () => {
@@ -312,17 +322,30 @@ export default function SearchBar() {
                 className="w-full text-left px-4 py-3 hover:bg-gray-100 border-b last:border-b-0 transition-colors"
               >
                 <div className="font-semibold text-gray-900">{result.label}</div>
-                {result.city && (
+                {result.resultType === "service" ? (
                   <div className="text-sm text-gray-600">
-                    {result.city}
-                    {result.postcode && ` - ${result.postcode}`}
+                    {result.prix && <span>💰 {result.prix}</span>}
+                    {result.prix && result.delai && <span> • </span>}
+                    {result.delai && <span>⏳ {result.delai}</span>}
                   </div>
+                ) : (
+                  <>
+                    {result.city && (
+                      <div className="text-sm text-gray-600">
+                        {result.city}
+                        {result.postcode && ` - ${result.postcode}`}
+                      </div>
+                    )}
+                    {result.score && (
+                      <div className="text-xs text-gray-500">
+                        Pertinence: {Math.round(result.score * 100)}%
+                      </div>
+                    )}
+                  </>
                 )}
-                {result.score && (
-                  <div className="text-xs text-gray-500">
-                    Pertinence: {Math.round(result.score * 100)}%
-                  </div>
-                )}
+                <div className="text-xs text-blue-600 mt-1">
+                  {result.resultType === "service" ? "📋 Service" : "📍 Adresse"}
+                </div>
               </button>
             ))}
           </div>

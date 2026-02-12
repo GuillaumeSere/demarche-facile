@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Demarche } from "../../types/demarche";
 import LocateMe from "../../components/LocateMe";
+import LocationLink from "../../components/LocationLink";
 
 async function getDemarche(slug: string) {
     try {
@@ -61,7 +62,7 @@ export default async function DemarcheDetail({ params }: Props) {
                     </div>
                     <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-orange-500">
                         <p className="text-sm text-gray-600 mb-1">📍 Lieu</p>
-                        <p className="text-lg font-bold text-orange-600">{demarche.lieu}</p>
+                        <LocationLink nom={demarche.lieu.nom} lien={demarche.lieu.lien} className="text-lg font-bold cursor-pointer text-orange-600 hover:underline" />
                     </div>
                 </div>
 
