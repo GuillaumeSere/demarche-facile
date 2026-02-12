@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://demarche-facile-60.vercel.app</loc><lastmod>2026-02-12T09:51:34.562Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/carte-identite</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/passeport</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/permis-conduire</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/mariage</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/naissance</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/divorce</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/changement-adresse</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/allocation-logement</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/rsa</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/pension-retraite</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/actualisation-chomage</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://demarche-facile-60.vercel.app/demarches/demande-asile</loc><lastmod>2026-02-12T10:50:32.741Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>

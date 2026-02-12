@@ -1,16 +1,7 @@
-async function getDemarches() {
-  const res = await fetch("http://localhost:3000/api/demarches", {
-    cache: "no-store",
-  });
-  return res.json();
-}
-
 import LocationLink from "../components/LocationLink";
+import demarches from "../data/demarches.json";
 
 export default async function DemarchesPage() {
-  const demarches = await getDemarches();
-  console.log(demarches)
-
   return (
     <main className="min-h-screen bg-linear-to-b from-blue-50 to-white">
       <div className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-12">

@@ -2,34 +2,23 @@ import { notFound } from "next/navigation";
 import { Demarche } from "../../types/demarche";
 import LocateMe from "../../components/LocateMe";
 import LocationLink from "../../components/LocationLink";
+import demarches from "../../data/demarches.json";
 
 async function getDemarche(slug: string) {
-    try {
-        const res = await fetch("http://localhost:3000/api/demarches", { cache: "no-store" });
-        if (!res.ok) {
-            console.log("API /api/demarches returned", res.status);
-            // fallback to local JSON
-            const demarches = (await import("../../data/demarches.json")).default as Demarche[];
-            return demarches.find((d) => d.slug === slug) || null;
-        }
-
-        const demarches: Demarche[] = await res.json();
-        return demarches.find((d) => d.slug === slug) || null;
-    } catch (err) {
-        console.log("fetch error:", err);
-        const demarches = (await import("../../data/demarches.json")).default as Demarche[];
-        return demarches.find((d) => d.slug === slug) || null;
-    }
+    const allDemarches = demarches as Demarche[];
+    return allDemarches.find((d) => d.slug === slug) || null;
 }
 
 type Props = {
     params: {
         slug: string;
-    };
+    } | Promise<{
+        slug: string;
+    }>;
 };
 
 export default async function DemarcheDetail({ params }: Props) {
-    const resolvedParams: any = await (params as any);
+    const resolvedParams = await params;
     const slug = resolvedParams?.slug;
 
     if (!slug) return notFound();

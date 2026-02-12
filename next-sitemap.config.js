@@ -1,12 +1,12 @@
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
-  siteUrl: "https://demarche-facile-60.vercel.app/", 
-  generateRobotsTxt: true, 
-  sitemapSize: 5000,
+const demarches = require("./app/data/demarches.json");
 
+module.exports = {
+  siteUrl: "https://demarche-facile-60.vercel.app",
+  generateRobotsTxt: true,
+  sitemapSize: 5000,
   changefreq: "weekly",
   priority: 0.7,
-
   robotsTxtOptions: {
     policies: [
       {
@@ -15,22 +15,15 @@ module.exports = {
       },
     ],
   },
-
   additionalPaths: async (config) => {
-  const demarches = [
-    "carte-identite",
-    "passeport",
-    "permis-conduire",
-    "carte-grise"
-  ];
+    const staticPaths = ["/", "/demarches"];
+    const demarchePaths = demarches.map((item) => `/demarches/${item.slug}`);
+    const allPaths = [...staticPaths, ...demarchePaths];
 
-  return demarches.map((slug) => ({
-    loc: `/demarches/${slug}`,
-    changefreq: "monthly",
-    priority: 0.8,
-  }));
-},
-
+    return Promise.all(
+      allPaths.map((path) => config.transform(config, path))
+    );
+  },
 };
 
 
