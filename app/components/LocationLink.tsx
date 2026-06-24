@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 interface LocationLinkProps {
   nom: string;
@@ -6,21 +6,22 @@ interface LocationLinkProps {
   className?: string;
 }
 
-export default function LocationLink({ nom, lien, className = "text-sm text-blue-600 hover:underline cursor-pointer" }: LocationLinkProps) {
+export default function LocationLink({
+  nom,
+  lien,
+  className = "text-sm font-semibold text-blue-700 hover:underline",
+}: LocationLinkProps) {
   if (!lien) {
-    return <span className="text-sm text-gray-600">{nom}</span>;
+    return <span className="text-sm text-slate-600">{nom}</span>;
   }
 
   return (
-    <span 
-      onClick={(e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        window.open(lien, '_blank');
-      }}
-      className={className}
+    <button
+      type="button"
+      onClick={() => window.open(lien, "_blank", "noopener,noreferrer")}
+      className={`text-left ${className}`}
     >
       {nom}
-    </span>
+    </button>
   );
 }

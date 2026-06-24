@@ -1,90 +1,89 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { ClipboardCheckIcon, MenuIcon, XIcon } from "./Icons";
+
+const navItems = [
+  { href: "/", label: "Accueil" },
+  { href: "/demarches", label: "Démarches" },
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-40">
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2 font-bold text-xl text-blue-600 hover:text-blue-700 transition-colors"
+          className="flex items-center gap-3 text-slate-950"
           onClick={closeMenu}
         >
-          <span className="text-2xl">📋</span>
-          <span className="hidden text-gray-900 hover:text-blue-700 transition-colors sm:inline">Démarche Facile</span>
+          <span className="grid size-10 place-items-center rounded-lg bg-blue-600 text-white shadow-sm">
+            <ClipboardCheckIcon className="size-5" />
+          </span>
+          <span className="leading-tight">
+            <span className="block text-base font-bold sm:text-lg">
+              Démarche Facile
+            </span>
+            <span className="hidden text-xs font-medium text-slate-500 sm:block">
+              Vos papiers, sans vous perdre
+            </span>
+          </span>
         </Link>
 
-        {/* Menu Desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link
-            href="/"
-            className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-          >
-            Accueil
-          </Link>
-          <Link
-            href="/demarches"
-            className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-          >
-            Démarches
-          </Link>
+        <div className="hidden items-center gap-2 md:flex">
+          {navItems.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === item.href
+                : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
+                  isActive
+                    ? "bg-slate-100 text-blue-700"
+                    : "text-slate-700 hover:bg-slate-50 hover:text-blue-700"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Hamburger Button */}
         <button
-          onClick={toggleMenu}
-          className="md:hidden cursor-pointer flex flex-col gap-1.5 p-2"
-          aria-label="Menu"
+          type="button"
+          onClick={() => setIsOpen((value) => !value)}
+          className="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-700 transition hover:border-blue-200 hover:text-blue-700 md:hidden"
+          aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={isOpen}
         >
-          <span
-            className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-              isOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          ></span>
-          <span
-            className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-              isOpen ? "opacity-0" : ""
-            }`}
-          ></span>
-          <span
-            className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-              isOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          ></span>
+          {isOpen ? <XIcon className="size-5" /> : <MenuIcon className="size-5" />}
         </button>
       </nav>
 
-      {/* Menu Mobile */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
-          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
-            <Link
-              href="/"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2"
-              onClick={closeMenu}
-            >
-              Accueil
-            </Link>
-            <Link
-              href="/demarches"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors py-2"
-              onClick={closeMenu}
-            >
-              Démarches
-            </Link>
+        <div className="border-t border-slate-100 bg-white md:hidden">
+          <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-lg px-3 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-blue-700"
+                onClick={closeMenu}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       )}

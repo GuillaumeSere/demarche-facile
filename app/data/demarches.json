@@ -5,7 +5,7 @@
     "documents": [
       "Photo d'identité récente",
       "Justificatif de domicile",
-      "Ancienne carte d'identité (si renouvellement)"
+      "Ancienne carte d'identité en cas de renouvellement"
     ],
     "prix": "Gratuit",
     "delai": "2 à 4 semaines",
@@ -18,11 +18,11 @@
     "slug": "passeport",
     "titre": "Passeport biométrique",
     "documents": [
-      "Photo d'identité",
+      "Photo d'identité récente",
       "Timbre fiscal",
       "Justificatif de domicile"
     ],
-    "prix": "86€ (adulte)",
+    "prix": "86 € pour un adulte",
     "delai": "3 à 6 semaines",
     "lieu": {
       "nom": "Mairie équipée",
@@ -35,10 +35,10 @@
     "documents": [
       "Pièce d'identité",
       "Justificatif de domicile",
-      "Certificat médical",
+      "Certificat médical si demandé",
       "Attestation de suivi de formation"
     ],
-    "prix": "À partir de 200€",
+    "prix": "À partir de 200 €",
     "delai": "4 à 8 semaines",
     "lieu": {
       "nom": "ANTS",
@@ -52,11 +52,11 @@
       "Acte de naissance",
       "Pièce d'identité",
       "Justificatif de domicile",
-      "Certificat médical",
+      "Informations sur les témoins",
       "Dossier de mariage complet"
     ],
     "prix": "Gratuit",
-    "delai": "15 jours avant la cérémonie",
+    "delai": "15 jours minimum avant la cérémonie",
     "lieu": {
       "nom": "Mairie de résidence",
       "lien": "https://www.service-public.gouv.fr/particuliers/vosdroits/N142"
@@ -83,10 +83,10 @@
     "documents": [
       "Acte de mariage",
       "Pièces d'identité",
-      "Accord sur les modalités (si à l'amiable)",
+      "Accord sur les modalités en cas de divorce amiable",
       "Dossier de procédure"
     ],
-    "prix": "À partir de 300€",
+    "prix": "À partir de 300 €",
     "delai": "3 à 12 mois",
     "lieu": {
       "nom": "Tribunal ou notaire",
@@ -127,7 +127,7 @@
   },
   {
     "slug": "rsa",
-    "titre": "Revenu de Solidarité Active (RSA)",
+    "titre": "Revenu de solidarité active (RSA)",
     "documents": [
       "Formulaire de demande",
       "Pièce d'identité",
@@ -170,8 +170,8 @@
     "prix": "Gratuit",
     "delai": "Immédiat",
     "lieu": {
-      "nom": "Pôle emploi",
-      "lien": "https://www.pole-emploi.fr"
+      "nom": "France Travail",
+      "lien": "https://www.francetravail.fr"
     }
   },
   {

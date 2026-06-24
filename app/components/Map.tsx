@@ -1,17 +1,38 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import { useEffect } from "react";
-import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { useEffect } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
-// 1. Correction impérative des icônes Leaflet
-const DefaultIcon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
+const DefaultIcon = L.divIcon({
+  className: "",
+  html: `
+    <span style="
+      display:block;
+      width:24px;
+      height:24px;
+      border-radius:999px 999px 999px 0;
+      transform:rotate(-45deg);
+      background:#2563eb;
+      border:3px solid #ffffff;
+      box-shadow:0 8px 20px rgba(15, 23, 42, .28);
+    ">
+      <span style="
+        display:block;
+        width:8px;
+        height:8px;
+        margin:5px;
+        border-radius:999px;
+        background:#ffffff;
+      "></span>
+    </span>
+  `,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+  popupAnchor: [0, -26],
 });
+
 L.Marker.prototype.options.icon = DefaultIcon;
 
 type Mairie = {
@@ -29,48 +50,49 @@ type Props = {
   mairies?: Mairie[];
 };
 
-// 2. Le "Cerveau" de la carte : il force le déplacement quand lat/lon changent
 function ChangeView({ center }: { center: [number, number] }) {
   const map = useMap();
+
   useEffect(() => {
     map.setView(center, map.getZoom());
   }, [center, map]);
+
   return null;
 }
 
 export default function Map({ lat, lon, mairies = [] }: Props) {
-    console.log("Mairies reçues par la Map :", mairies);
   return (
-    <div className="h-96 w-full relative">
+    <div className="h-[22rem] w-full md:h-96">
       <MapContainer
         center={[lat, lon]}
         zoom={13}
         scrollWheelZoom={false}
-        className="h-full w-full z-0 rounded"
+        className="z-0 h-full w-full"
       >
         <TileLayer
-          attribution='&copy; OpenStreetMap contributors'
+          attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        
-        {/* On active le changement de vue dynamique */}
+
         <ChangeView center={[lat, lon]} />
 
-        {/* Marqueur Utilisateur */}
         <Marker position={[lat, lon]}>
-          <Popup>Vous êtes ici</Popup>
+          <Popup>Position sélectionnée</Popup>
         </Marker>
 
-        {/* Marqueurs Mairies */}
-        {mairies.map((mairie, idx) => (
-          <Marker key={idx} position={[mairie.latitude, mairie.longitude]}>
+        {mairies.map((mairie, index) => (
+          <Marker
+            key={`${mairie.nom}-${index}`}
+            position={[mairie.latitude, mairie.longitude]}
+          >
             <Popup>
               <div className="min-w-48">
                 <p className="font-bold text-blue-700">{mairie.nom}</p>
-                <p className="text-sm text-gray-600 italic">{mairie.adresse}</p>
+                <p className="text-sm text-slate-600">{mairie.adresse}</p>
                 {mairie.city && (
-                  <p className="text-xs text-gray-500 mt-2">
-                    {mairie.city} {mairie.postcode && `- ${mairie.postcode}`}
+                  <p className="mt-2 text-xs text-slate-500">
+                    {mairie.city}
+                    {mairie.postcode ? ` - ${mairie.postcode}` : ""}
                   </p>
                 )}
               </div>

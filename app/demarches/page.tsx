@@ -1,49 +1,85 @@
-import LocationLink from "../components/LocationLink";
+import Link from "next/link";
+import {
+  ArrowRightIcon,
+  BuildingIcon,
+  ClockIcon,
+  FileTextIcon,
+  WalletIcon,
+} from "../components/Icons";
 import demarches from "../data/demarches.json";
+import type { Demarche } from "../types/demarche";
+
+const allDemarches = demarches as Demarche[];
 
 export default async function DemarchesPage() {
   return (
-    <main className="min-h-screen bg-linear-to-b from-blue-50 to-white">
-      <div className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-2xl md:text-4xl font-bold mb-2">📋 Toutes les démarches</h1>
-          <p className="text-blue-100 text-lg">Trouvez les informations nécessaires pour vos démarches administratives</p>
+    <main className="min-h-screen bg-slate-50">
+      <section className="bg-slate-950 px-4 py-14 text-white sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-sm font-bold uppercase text-sky-300">
+            Catalogue des démarches
+          </p>
+          <div className="mt-3 grid gap-6 md:grid-cols-[1fr_18rem] md:items-end">
+            <div>
+              <h1 className="text-3xl font-bold sm:text-4xl">
+                Toutes les démarches administratives
+              </h1>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-300">
+                Choisissez une fiche pour connaître les documents à préparer,
+                le délai moyen, le prix et l&apos;organisme compétent.
+              </p>
+            </div>
+            <div className="rounded-lg border border-white/10 bg-white/10 p-4">
+              <p className="text-3xl font-bold">{allDemarches.length}</p>
+              <p className="text-sm text-slate-300">fiches disponibles</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {demarches.map((d: any) => (
-            <a
-              key={d.slug}
-              href={`/demarches/${d.slug}`}
-              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden border border-gray-100"
+      <section className="px-4 py-12 sm:px-6">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {allDemarches.map((demarche) => (
+            <Link
+              key={demarche.slug}
+              href={`/demarches/${demarche.slug}`}
+              className="group flex min-h-72 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-200 hover:shadow-md"
             >
-              <div className="h-2 bg-linear-to-r from-blue-600 to-blue-800 group-hover:from-blue-700 group-hover:to-blue-900"></div>
-              <div className="p-6">
-                <h2 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{d.titre}</h2>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-blue-600 font-semibold">⏳</span>
-                    <span className="text-sm text-gray-600">{d.delai}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-green-600 font-semibold">💰</span>
-                    <span className="text-sm text-gray-600">{d.prix}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-orange-600 font-semibold">📍</span>
-                    <LocationLink nom={d.lieu.nom} lien={d.lieu.lien} />
-                  </div>
-                </div>
-                <div className="mt-4 inline-flex items-center text-blue-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                  Voir détails →
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <span className="grid size-11 place-items-center rounded-lg bg-blue-50 text-blue-700 ring-1 ring-blue-100">
+                  <FileTextIcon className="size-5" />
+                </span>
+                <ArrowRightIcon className="mt-3 size-4 text-blue-700 transition group-hover:translate-x-1" />
+              </div>
+
+              <h2 className="text-xl font-bold text-slate-950 group-hover:text-blue-700">
+                {demarche.titre}
+              </h2>
+
+              <div className="mt-5 space-y-3 text-sm text-slate-600">
+                <p className="flex items-start gap-2">
+                  <ClockIcon className="mt-0.5 size-4 shrink-0 text-blue-700" />
+                  <span>{demarche.delai}</span>
+                </p>
+                <p className="flex items-start gap-2">
+                  <WalletIcon className="mt-0.5 size-4 shrink-0 text-emerald-700" />
+                  <span>{demarche.prix}</span>
+                </p>
+                <p className="flex items-start gap-2">
+                  <BuildingIcon className="mt-0.5 size-4 shrink-0 text-amber-700" />
+                  <span>{demarche.lieu.nom}</span>
+                </p>
+              </div>
+
+              <div className="mt-auto pt-6">
+                <div className="rounded-lg bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-600">
+                  {demarche.documents.length} document(s) à vérifier
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
-      </div>
+      </section>
     </main>
   );
 }
